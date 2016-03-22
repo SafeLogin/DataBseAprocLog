@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2016 5:19:25 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="aproc.map.Uztrous" table="UZTROUS" schema="UTIC">
+        <composite-id name="id" class="aproc.map.UztrousId">
+            <key-property name="uztrolId" type="big_decimal">
+                <column name="UZTROL_ID" precision="38" scale="0" />
+            </key-property>
+            <key-property name="uztuserPidm" type="big_decimal">
+                <column name="UZTUSER_PIDM" precision="38" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="uztuser" class="aproc.map.Uztuser" update="false" insert="false" fetch="select">
+            <column name="UZTUSER_PIDM" precision="38" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="uztrol" class="aproc.map.Uztrol" update="false" insert="false" fetch="select">
+            <column name="UZTROL_ID" precision="38" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="uztrousFcha" type="date">
+            <column name="UZTROUS_FCHA" length="7" />
+        </property>
+        <property name="uztrousEstado" type="java.lang.Character">
+            <column name="UZTROUS_ESTADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

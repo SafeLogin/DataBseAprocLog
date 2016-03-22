@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2016 5:19:25 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="aproc.map.Uztrol" table="UZTROL" schema="UTIC">
+        <comment>Roles que se asignaran el cada sistema</comment>
+        <id name="uztrolId" type="big_decimal">
+            <column name="UZTROL_ID" precision="38" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="uztrolNombre" type="string">
+            <column name="UZTROL_NOMBRE" length="100" />
+        </property>
+        <property name="uztrolEstado" type="java.lang.Character">
+            <column name="UZTROL_ESTADO" length="1" />
+        </property>
+        <property name="uztrolFecha" type="date">
+            <column name="UZTROL_FECHA" length="7" />
+        </property>
+        <set name="uztrouses" table="UZTROUS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UZTROL_ID" precision="38" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="aproc.map.Uztrous" />
+        </set>
+    </class>
+</hibernate-mapping>

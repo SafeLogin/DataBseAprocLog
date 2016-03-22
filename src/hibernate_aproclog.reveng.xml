@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-schema="UTIC"/>
+  <table-filter match-name="UZTROL"/>
+  <table-filter match-name="UZTPROC"/>
+  <table-filter match-name="UZTSIST"/>
+  <table-filter match-name="UZTROUS"/>
+  <table-filter match-name="UZTUSER"/>
+</hibernate-reverse-engineering>

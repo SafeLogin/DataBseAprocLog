@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2016 5:19:25 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="aproc.map.Uztproc" table="UZTPROC" schema="UTIC">
+        <comment>Pocesos y/u opciones de cada m&#243;dulo</comment>
+        <composite-id name="id" class="aproc.map.UztprocId">
+            <key-property name="uztsistId" type="big_decimal">
+                <column name="UZTSIST_ID" precision="38" scale="0" />
+            </key-property>
+            <key-property name="uztprocId" type="big_decimal">
+                <column name="UZTPROC_ID" precision="38" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="uztproc" class="aproc.map.Uztproc" fetch="select">
+            <column name="UZT_UZTSIST_ID" precision="38" scale="0" />
+            <column name="UZT_UZTPROC_ID" precision="38" scale="0" />
+        </many-to-one>
+        <many-to-one name="uztsist" class="aproc.map.Uztsist" update="false" insert="false" fetch="select">
+            <column name="UZTSIST_ID" precision="38" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="uztprocNombre" type="string">
+            <column name="UZTPROC_NOMBRE" length="100" />
+        </property>
+        <property name="uztprocEjecucion" type="clob">
+            <column name="UZTPROC_EJECUCION" />
+        </property>
+        <property name="uztprocInicio" type="clob">
+            <column name="UZTPROC_INICIO" />
+        </property>
+        <property name="uztprocSalida" type="clob">
+            <column name="UZTPROC_SALIDA" />
+        </property>
+        <property name="uztprocEstado" type="java.lang.Character">
+            <column name="UZTPROC_ESTADO" length="1" />
+        </property>
+        <property name="uztprocFecha" type="date">
+            <column name="UZTPROC_FECHA" length="7" />
+        </property>
+        <property name="uztprocDescripcion" type="clob">
+            <column name="UZTPROC_DESCRIPCION" />
+        </property>
+        <set name="uztprocs" table="UZTPROC" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UZT_UZTSIST_ID" precision="38" scale="0" />
+                <column name="UZT_UZTPROC_ID" precision="38" scale="0" />
+            </key>
+            <one-to-many class="aproc.map.Uztproc" />
+        </set>
+    </class>
+</hibernate-mapping>

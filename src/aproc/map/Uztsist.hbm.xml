@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2016 5:19:25 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="aproc.map.Uztsist" table="UZTSIST" schema="UTIC">
+        <comment>Sistemas o m&#243;dulos que ser&#225;n implementados</comment>
+        <id name="uztsistId" type="big_decimal">
+            <column name="UZTSIST_ID" precision="38" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="uztsistNombre" type="string">
+            <column name="UZTSIST_NOMBRE" length="100" />
+        </property>
+        <property name="uztsistDescripcion" type="clob">
+            <column name="UZTSIST_DESCRIPCION" />
+        </property>
+        <property name="uztsistRuta" type="clob">
+            <column name="UZTSIST_RUTA" />
+        </property>
+        <property name="uztsistEstado" type="java.lang.Character">
+            <column name="UZTSIST_ESTADO" length="1" />
+        </property>
+        <property name="uztsistFecha" type="date">
+            <column name="UZTSIST_FECHA" length="7" />
+        </property>
+        <set name="uztprocs" table="UZTPROC" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UZTSIST_ID" precision="38" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="aproc.map.Uztproc" />
+        </set>
+    </class>
+</hibernate-mapping>
