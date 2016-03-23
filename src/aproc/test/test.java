@@ -23,8 +23,11 @@ public class test {
     public static void main(String[] args) {
         // TODO code application logic here
         
-       ArrayList<Uztuser> usuario = AprocLogMethods.ListUsuarios();
-       System.out.print(usuario);
+       //ArrayList<Uztuser> usuario = AprocLogMethods.ListUsuarios();
+      // System.out.println(usuario);
+        System.out.println("////////////////////////////////////////");
+        Uztuser usuario=AprocLogMethods.GetUsuariosById("L00037548");
+        System.out.println(usuario);
         
     }
     

@@ -36,5 +36,32 @@ public class AprocLogMethods {
         return listUsuario;
     }
     
+    //////////////////////
+    
+    public static Uztuser GetUsuariosById(String uztuserId) {
+        Uztuser objUsuario = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztuserId != null) {
+                objUsuario = AprocLogCrud.findUsuarioByIdUsuario(uztuserId);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DE USUARIO POR ID : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objUsuario;
+    }
+    
     
 }

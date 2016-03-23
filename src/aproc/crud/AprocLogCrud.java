@@ -39,32 +39,28 @@ public class AprocLogCrud {
     }
     //////////////////////////////////////////////////////////
     
-     /*
-    public static ArrayList<Uztuser> findUsuarioByIdUsuario(BigDecimal uztfuncionarioId) {
-        ArrayList<Uztuser> listRol = null;
-        DAOServices ds = new DAOServices(ProcuraduriaHibernateUtil.
+    /// BUSQUEDA DE USUARIOS POR ID
+    public static Uztuser findUsuarioByIdUsuario(String uztuserId) {
+        Uztuser listUsuario = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
                 getSessionFactory().getCurrentSession());
         QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
-        query_1.setColumnName("id.uztfuncionarioId");
+        ///////
+        query_1.setColumnName("uztuserId");
         query_1.setWhereClause("=");
-        query_1.setValue(uztfuncionarioId);
-        //uztrolFlag
-        QueryParameter query_2 = new QueryParameter(QueryParameter.$TYPE_WHERE);
-        query_2.setColumnName("uztrolFlag");
-        query_2.setWhereClause("=");
-        query_2.setValue(uztrolFlag);
+        query_1.setValue(uztuserId);
+        
         List parameList = new ArrayList();
         parameList.add(query_1);
-        parameList.add(query_2);
         List<Uztuser> list = ds.customQuery(parameList, Uztuser.class);
         try {
             if (!list.isEmpty()) {
-                listRol = (ArrayList<Uztuser>) list;
+                listUsuario = (Uztuser) list.get(0);
             }
         } catch (Exception ex) {
-            log.level.info("ERROR  LISTROL : " + ex.toString());
+            log.level.info("ERROR  LISTUSUARIO : " + ex.toString());
         }
-        return listRol;
-    }*/
+        return listUsuario;
+    }
     
 }
