@@ -63,4 +63,29 @@ public class AprocLogCrud {
         return listUsuario;
     }
     
+    
+    /////BUSQUEDA DE USUARIOS POR ESTADO
+    public static ArrayList<Uztuser> listUsuariosByEstado(Character uztuserEstado) {
+        ArrayList<Uztuser> listUsuarios = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        query_1.setColumnName("uztuserEstado");
+        query_1.setWhereClause("=");
+        query_1.setValue(uztuserEstado);
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztuser> list = ds.customQuery(parameList, Uztuser.class);
+        try {
+            if (!list.isEmpty()) {
+                listUsuarios = (ArrayList<Uztuser>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR LISTA USUARIOS POR ESTADO: " + ex.toString());
+        }
+        return listUsuarios;
+    }
+    
+    
+    
 }

@@ -26,7 +26,8 @@ public class test {
        //ArrayList<Uztuser> usuario = AprocLogMethods.ListUsuarios();
       // System.out.println(usuario);
         System.out.println("////////////////////////////////////////");
-        Uztuser usuario=AprocLogMethods.GetUsuariosById("L00037548");
+        //Uztuser usuario=AprocLogMethods.GetUsuariosById("L00037548");
+        ArrayList<Uztuser> usuario = AprocLogMethods.GetUsuariosByEstado('A');
         System.out.println(usuario);
         
     }

@@ -63,5 +63,31 @@ public class AprocLogMethods {
         return objUsuario;
     }
     
+    ////////////////////////
+    public static ArrayList<Uztuser> GetUsuariosByEstado(Character uztuserEstado) {
+        ArrayList<Uztuser> objUsuario = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztuserEstado != null) {
+                objUsuario = AprocLogCrud.listUsuariosByEstado(uztuserEstado);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DE USUARIO POR ID : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objUsuario;
+    }
+    
     
 }
