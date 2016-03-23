@@ -26,7 +26,7 @@ public class AprocLogHibernateUtil {
     static {
         try {
             Configuration configuration = new Configuration();
-            configuration.configure("/procuraduria_hibernate.cfg.xml");
+            configuration.configure("/hibernate_aproclog.cfg.xml");
             sessionServiceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             sessionFactory = configuration.buildSessionFactory(sessionServiceRegistry);
         } catch (Throwable ex) {

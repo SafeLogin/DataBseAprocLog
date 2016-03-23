@@ -6,6 +6,11 @@
 
 package aproc.test;
 
+import aproc.crud.AprocLogCrud;
+import aproc.crud.AprocLogMethods;
+import aproc.map.Uztuser;
+import java.util.ArrayList;
+
 /**
  *
  * @author Ivan
@@ -17,6 +22,10 @@ public class test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+       ArrayList<Uztuser> usuario = AprocLogMethods.ListUsuarios();
+       System.out.print(usuario);
+        
     }
     
 }
