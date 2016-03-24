@@ -88,6 +88,84 @@ public class AprocLogMethods {
         }
         return objUsuario;
     }
-    
+    /////////////////////////////////////////////////
+    //LISTA DE USUARIOS POR EL CARGO
+    public static ArrayList<Uztuser> GetUsuariosByCargo(String uztuserCargo) {
+        ArrayList<Uztuser> objUsuario = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztuserCargo != null) {
+                objUsuario = AprocLogCrud.listUsuariosByCargo(uztuserCargo);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DE USUARIO POR CASO : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objUsuario;
+    }
+
+        /////////////////////////////////////////////////
+    //LISTA DE USUARIOS POR EL CAMPUS
+    public static ArrayList<Uztuser> GetUsuariosByCampus(String uztuserCampus) {
+        ArrayList<Uztuser> objUsuario = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztuserCampus != null) {
+                objUsuario = AprocLogCrud.listUsuariosByCampus(uztuserCampus);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DE USUARIO POR CAMPUS : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objUsuario;
+    }
+    //////////////////////////
+    ///LISTA DE ROLES POR ESTADO
+    public static ArrayList<Uztrol> GetRolesByEstado(Character uztrolEstado) {
+        ArrayList<Uztrol> objRol = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztrolEstado != null) {
+                objRol = AprocLogCrud.listRolesByEstado(uztrolEstado);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DE ROLES POR ESTADO : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objRol;
+    }
     
 }

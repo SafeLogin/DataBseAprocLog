@@ -85,7 +85,76 @@ public class AprocLogCrud {
         }
         return listUsuarios;
     }
-    
-    
+    /////////////////////////////////////////////////////////////////////////
+    //BUSQUEDA DE USUARIOS POR EL CARGO 
+     public static ArrayList<Uztuser> listUsuariosByCargo(String uztuserCargo) {
+        ArrayList<Uztuser> listUsuarios = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        query_1.setColumnName("uztuserCargo");
+        query_1.setWhereClause("=");
+        query_1.setValue(uztuserCargo);
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztuser> list = ds.customQuery(parameList, Uztuser.class);
+        try {
+            if (!list.isEmpty()) {
+                listUsuarios = (ArrayList<Uztuser>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR LISTA USUARIOS POR CARGO: " + ex.toString());
+        }
+        return listUsuarios;
+    }
+    /////////////////////////////////////////////////////////////////////////
+    //BUSQUEDA DE USUARIOS POR EL CAMPUS 
+     public static ArrayList<Uztuser> listUsuariosByCampus(String uztuserCampus) {
+        ArrayList<Uztuser> listUsuarios = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        query_1.setColumnName("uztuserCampus");
+        query_1.setWhereClause("=");
+        query_1.setValue(uztuserCampus);
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztuser> list = ds.customQuery(parameList, Uztuser.class);
+        try {
+            if (!list.isEmpty()) {
+                listUsuarios = (ArrayList<Uztuser>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR LISTA USUARIOS POR CAMPUS: " + ex.toString());
+        }
+        return listUsuarios;
+    }
+     
+     
+     
+     
+     ////////////////////////
+     //BUSQUEDA DE ROL POR ESTADO
+
+      public static ArrayList<Uztrol> listRolesByEstado(Character uztrolEstado) {
+        ArrayList<Uztrol> listRoles = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        query_1.setColumnName("uztrolEstado");
+        query_1.setWhereClause("=");
+        query_1.setValue(uztrolEstado);
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztrol> list = ds.customQuery(parameList, Uztrol.class);
+        try {
+            if (!list.isEmpty()) {
+                listRoles = (ArrayList<Uztrol>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR LISTA ROLES POR ESTADO: " + ex.toString());
+        }
+        return listRoles;
+    }
     
 }
