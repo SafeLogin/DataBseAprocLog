@@ -156,5 +156,22 @@ public class AprocLogCrud {
         }
         return listRoles;
     }
+      /////////by: Elvis Sarchi
+      ///BUSQUEDA QUE DEVUELVE TODOS LOS ROLES
+      public static ArrayList<Uztrol> listRoles() {
+        ArrayList<Uztrol> listRoles = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        List parameList = new ArrayList();
+        List<Uztrol> list = ds.customQuery(parameList, Uztrol.class);
+        try {
+            if (!list.isEmpty()) {
+                listRoles = (ArrayList<Uztrol>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR  LIST ROLES : " + ex.toString());
+        }
+        return listRoles;
+    }
     
 }

@@ -35,8 +35,8 @@ public class test {
         
           //**************ROLES************************************//
         
-        ArrayList<Uztrol> rolesEstado = AprocLogMethods.GetRolesByEstado('D');
-        System.out.println(rolesEstado);
+        ArrayList<Uztrol> roles = AprocLogMethods.ListRoles();
+        System.out.println(roles);
         
         //**************ROLES USUARIO************************************//
     }

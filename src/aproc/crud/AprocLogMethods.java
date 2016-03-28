@@ -167,5 +167,27 @@ public class AprocLogMethods {
         }
         return objRol;
     }
-    
+    ////////////////////by: Elvis Sarchi
+    ///TODA LA LISTA DE ROLES
+    public static ArrayList<Uztrol> ListRoles() {
+        ArrayList<Uztrol> listRoles = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            listRoles = AprocLogCrud.listRoles();
+        } catch (Exception ex) {
+            log.level.error("ERROR EN LISTROLES : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return listRoles;
+    }
 }
