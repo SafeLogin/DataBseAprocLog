@@ -268,4 +268,31 @@ public class AprocLogMethods {
         }
         return objSistema;
     }
+    
+    //////////////////////////////////////////////////////
+    ///LISTA DE SISTEMAS POR ESTADO
+    public static ArrayList<Uztsist> GetSistemasByEstado(Character uztsistEstado) {
+        ArrayList<Uztsist> objSistemas = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztsistEstado != null) {
+                objSistemas = AprocLogCrud.listSistemasByEstado(uztsistEstado);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DE SISTEMAS POR ESTADO : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objSistemas;
+    }
 }

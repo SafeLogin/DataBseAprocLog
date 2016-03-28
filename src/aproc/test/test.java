@@ -49,8 +49,10 @@ public class test {
         
 //        ArrayList<Uztsist> sistemas = AprocLogMethods.ListSistemas();
 //        System.out.println(sistemas);
-          Uztsist sistemas = AprocLogMethods.GetSistemaById(new BigDecimal(2));
-           System.out.println(sistemas);
+//          Uztsist sistemas = AprocLogMethods.GetSistemaById(new BigDecimal(2));
+//           System.out.println(sistemas);
+         ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByEstado('A');
+         System.out.println(sistemas);
         
         //**************SISTEMAS************************************//
     }

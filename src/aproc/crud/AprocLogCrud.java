@@ -241,5 +241,26 @@ public class AprocLogCrud {
         }
         return listSistema;
     }
-    
+    //////////////////////////////////////////////////////////////////////
+      //////////BUSQUEDA DE SISTEMAS POR ESTADO
+      public static ArrayList<Uztsist> listSistemasByEstado(Character uztsistEstado) {
+        ArrayList<Uztsist> listSistemas = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        query_1.setColumnName("uztsistEstado");
+        query_1.setWhereClause("=");
+        query_1.setValue(uztsistEstado);
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztsist> list = ds.customQuery(parameList, Uztsist.class);
+        try {
+            if (!list.isEmpty()) {
+                listSistemas = (ArrayList<Uztsist>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR LISTA SISTEMAS POR ESTADO: " + ex.toString());
+        }
+        return listSistemas;
+    }
 }
