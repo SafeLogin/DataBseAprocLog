@@ -263,4 +263,24 @@ public class AprocLogCrud {
         }
         return listSistemas;
     }
+      
+      
+      //////PROCEDIMIENTOS///////////////////////
+      //////////////////////////////////////////////
+      ////BUSQUEDA QUE DEVUELVE TODOS LOS PROCEDIMIENTOS
+       public static ArrayList<Uztproc> listProcedimientos() {
+        ArrayList<Uztproc> listProcedimientos = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        List parameList = new ArrayList();
+        List<Uztproc> list = ds.customQuery(parameList, Uztproc.class);
+        try {
+            if (!list.isEmpty()) {
+                listProcedimientos = (ArrayList<Uztproc>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR  LIST PROCEDIMIENTOS : " + ex.toString());
+        }
+        return listProcedimientos;
+    }
 }

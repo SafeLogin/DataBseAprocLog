@@ -8,6 +8,7 @@ package aproc.test;
 
 import aproc.crud.AprocLogCrud;
 import aproc.crud.AprocLogMethods;
+import aproc.map.Uztproc;
 import aproc.map.Uztrol;
 import aproc.map.Uztsist;
 import aproc.map.Uztuser;
@@ -51,10 +52,18 @@ public class test {
 //        System.out.println(sistemas);
 //          Uztsist sistemas = AprocLogMethods.GetSistemaById(new BigDecimal(2));
 //           System.out.println(sistemas);
-         ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByEstado('A');
-         System.out.println(sistemas);
+//         ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByEstado('A');
+//         System.out.println(sistemas);
         
         //**************SISTEMAS************************************//
+        
+        
+        //**************PROCEDIMIENTOS************************************//
+        
+        ArrayList<Uztproc> procedi = AprocLogMethods.ListProcedimientos();
+        System.out.println(procedi);
+        
+        //**************PROCEDIMIENTOS************************************//
     }
     
 }

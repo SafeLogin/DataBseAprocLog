@@ -295,4 +295,30 @@ public class AprocLogMethods {
         }
         return objSistemas;
     }
+    
+    
+     ///////////PROCEDIMIENTOS/////////////
+    ///////////////////////////////////////
+    /////////LISTA DE PROCEDIMIENTOS
+     public static ArrayList<Uztproc> ListProcedimientos() {
+        ArrayList<Uztproc> listProcedimientos = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            listProcedimientos = AprocLogCrud.listProcedimientos();
+        } catch (Exception ex) {
+            log.level.error("ERROR EN LIST PROCEDIMIENTOS : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return listProcedimientos;
+    }
 }
