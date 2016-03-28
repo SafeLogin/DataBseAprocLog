@@ -9,7 +9,9 @@ package aproc.test;
 import aproc.crud.AprocLogCrud;
 import aproc.crud.AprocLogMethods;
 import aproc.map.Uztrol;
+import aproc.map.Uztsist;
 import aproc.map.Uztuser;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -35,10 +37,22 @@ public class test {
         
           //**************ROLES************************************//
         
-        ArrayList<Uztrol> roles = AprocLogMethods.ListRoles();
-        System.out.println(roles);
+     //   ArrayList<Uztrol> roles = AprocLogMethods.ListRoles();
+       // System.out.println(roles);
+      //  Uztrol roles= AprocLogMethods.GetRolById(new BigDecimal(7));
+        //System.out.println(roles);
         
         //**************ROLES USUARIO************************************//
+        
+        
+         //**************SISTEMAS************************************//
+        
+//        ArrayList<Uztsist> sistemas = AprocLogMethods.ListSistemas();
+//        System.out.println(sistemas);
+          Uztsist sistemas = AprocLogMethods.GetSistemaById(new BigDecimal(2));
+           System.out.println(sistemas);
+        
+        //**************SISTEMAS************************************//
     }
     
 }

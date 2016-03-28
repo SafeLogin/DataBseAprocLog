@@ -132,7 +132,7 @@ public class AprocLogCrud {
      
      
      
-     
+     /////ROLES
      ////////////////////////
      //BUSQUEDA DE ROL POR ESTADO
 
@@ -172,6 +172,74 @@ public class AprocLogCrud {
             log.level.info("ERROR  LIST ROLES : " + ex.toString());
         }
         return listRoles;
+    }
+      ///////////////
+      ///BUSQUEDA DE ROL POR ID
+      public static Uztrol findRolByIdRol(BigDecimal uztrolId) {
+        Uztrol listRol = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        ///////
+        query_1.setColumnName("uztrolId");
+        query_1.setWhereClause("=");
+        query_1.setValue(uztrolId);
+        
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztrol> list = ds.customQuery(parameList, Uztrol.class);
+        try {
+            if (!list.isEmpty()) {
+                listRol = (Uztrol) list.get(0);
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR  LIST ROL : " + ex.toString());
+        }
+        return listRol;
+    }
+      
+      //////SISTEMAS///////////////////////
+      //////////////////////////////////////////////
+      ////BUSQUEDA QUE DEVUELVE TODOS LOS SISTEMAS
+      public static ArrayList<Uztsist> listSistemas() {
+        ArrayList<Uztsist> listSistemas = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        List parameList = new ArrayList();
+        List<Uztsist> list = ds.customQuery(parameList, Uztsist.class);
+        try {
+            if (!list.isEmpty()) {
+                listSistemas = (ArrayList<Uztsist>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR  LIST SISTEMAS : " + ex.toString());
+        }
+        return listSistemas;
+    }
+      
+      ////////////////////////////////////////////////
+      /////BUQUEDA DE SISTEMAS POR ID
+      public static Uztsist findSistemaByIdSistema(BigDecimal uztsistId) {
+        Uztsist listSistema = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        ///////
+        query_1.setColumnName("uztsistId");
+        query_1.setWhereClause("=");
+        query_1.setValue(uztsistId);
+        
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztsist> list = ds.customQuery(parameList, Uztsist.class);
+        try {
+            if (!list.isEmpty()) {
+                listSistema = (Uztsist) list.get(0);
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR  LIST SISTEMAS : " + ex.toString());
+        }
+        return listSistema;
     }
     
 }

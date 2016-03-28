@@ -190,4 +190,82 @@ public class AprocLogMethods {
         }
         return listRoles;
     }
+    //////////////////
+    ///LISTA DE ROLES POR ID DE ROL
+    public static Uztrol GetRolById(BigDecimal uztrolId) {
+        Uztrol objRol = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztrolId != null) {
+                objRol = AprocLogCrud.findRolByIdRol(uztrolId);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DEL ROL POR ID : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objRol;
+    }
+    
+    ///////////SISTEMAS/////////////
+    ///////////////////////////////////////
+    /////////LISTA DE SISTEMAS
+    public static ArrayList<Uztsist> ListSistemas() {
+        ArrayList<Uztsist> listSistemas = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            listSistemas = AprocLogCrud.listSistemas();
+        } catch (Exception ex) {
+            log.level.error("ERROR EN LIST SISTEMAS : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return listSistemas;
+    }
+    
+    //////////////////////////////////////////////////
+    /////SISTEMA POR ID
+    public static Uztsist GetSistemaById(BigDecimal uztsistId) {
+        Uztsist objSistema = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (uztsistId != null) {
+                objSistema = AprocLogCrud.findSistemaByIdSistema(uztsistId);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DEL SISTEMA POR ID : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objSistema;
+    }
 }
