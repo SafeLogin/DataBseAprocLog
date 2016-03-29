@@ -14,6 +14,8 @@ import aproc.map.Uztsist;
 import aproc.map.Uztuser;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.sql.Clob;
+import java.sql.SQLException;
 
 /**
  *
@@ -24,7 +26,8 @@ public class test {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        Clob a= null;
         //**************USUARIOS************************************//
         
        //ArrayList<Uztuser> usuario = AprocLogMethods.ListUsuarios();
@@ -57,6 +60,8 @@ public class test {
         
         //**************SISTEMAS************************************//
         
+        ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByRuta("miespe");
+        System.out.println(sistemas);
         
         //**************PROCEDIMIENTOS************************************//
         

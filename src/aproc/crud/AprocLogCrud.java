@@ -5,18 +5,13 @@ import aproc.util.*;
 import com.dao.DAOServices;
 import com.dao.QueryParameter;
 import com.logger.L;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import oracle.jdbc.OracleCallableStatement;
-import oracle.jdbc.OracleTypes;
-import oracle.sql.NUMBER;
-import org.hibernate.HibernateException;
-import org.hibernate.jdbc.ReturningWork;
+import oracle.sql.CLOB;
 
 public class AprocLogCrud {
     
@@ -264,6 +259,57 @@ public class AprocLogCrud {
         return listSistemas;
     }
       
+      public static String CLOBToStringaaa(CLOB cl) throws IOException, SQLException 
+        {
+        if (cl == null)
+        return "";
+        StringBuffer strOut = new StringBuffer();
+        String aux;
+        BufferedReader br = new BufferedReader(cl.getCharacterStream());
+        while ((aux=br.readLine()) != null)
+        {
+        strOut.append(aux);
+        }
+        return strOut.toString();
+        }
+      
+      
+private static java.sql.Clob stringToClob(String source)
+{
+    try
+    {
+        return new javax.sql.rowset.serial.SerialClob(source.toCharArray());
+    }
+    catch (Exception e)
+    {
+        //log("Could not convert string to a CLOB",e);
+        return null;
+    }
+}
+
+//////////////////////////////////////
+      /// BUSQUEDA DE SISTEMAS POR RUTA
+      public static ArrayList<Uztsist> listSistemasByRuta(String uztsistRuta) {
+          java.sql.Clob clob=stringToClob(uztsistRuta);
+        ArrayList<Uztsist> listSistemas = null;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        QueryParameter query_1 = new QueryParameter(QueryParameter.$TYPE_WHERE);
+        query_1.setColumnName("uztsistRuta");
+        query_1.setWhereClause("=");
+        query_1.setValue(clob);
+        List parameList = new ArrayList();
+        parameList.add(query_1);
+        List<Uztsist> list = ds.customQuery(parameList, Uztsist.class);
+        try {
+            if (!list.isEmpty()) {
+                listSistemas = (ArrayList<Uztsist>) list;
+            }
+        } catch (Exception ex) {
+            log.level.info("ERROR LISTA SISTEMAS POR RUTA: " + ex.toString());
+        }
+        return listSistemas;
+    }
       
       //////PROCEDIMIENTOS///////////////////////
       //////////////////////////////////////////////
@@ -283,4 +329,7 @@ public class AprocLogCrud {
         }
         return listProcedimientos;
     }
+       
+       
+       
 }

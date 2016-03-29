@@ -6,6 +6,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import aproc.map.*;
 import aproc.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.sql.SQLException;
+import oracle.sql.CLOB;
 public class AprocLogMethods {
     
      private final static L log = new L(AprocLogMethods.class);
@@ -296,7 +300,31 @@ public class AprocLogMethods {
         return objSistemas;
     }
     
-    
+///////Lista de sistemas por ruta
+    public static ArrayList<Uztsist> GetSistemasByRuta(String uztsistRuta) {
+        ArrayList<Uztsist> objSistemas = null;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (stringToClob(uztsistRuta) != null) {
+                objSistemas = AprocLogCrud.listSistemasByRuta(uztsistRuta);
+            }
+
+        } catch (Exception ex) {
+            log.level.error("ERROR EN BUSQUEDA DE SISTEMAS POR RUTA : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return objSistemas;
+    }
      ///////////PROCEDIMIENTOS/////////////
     ///////////////////////////////////////
     /////////LISTA DE PROCEDIMIENTOS
@@ -320,5 +348,9 @@ public class AprocLogMethods {
             }
         }
         return listProcedimientos;
+    }
+
+    private static Object stringToClob(String uztsistRuta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
