@@ -60,7 +60,7 @@ public class test {
         
         //**************SISTEMAS************************************//
         
-        ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByRuta("miespe");
+        ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByEstado('A');
         System.out.println(sistemas);
         
         //**************PROCEDIMIENTOS************************************//
