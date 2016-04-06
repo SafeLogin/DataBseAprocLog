@@ -10,7 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.SQLException;
 import oracle.sql.CLOB;
-public class AprocLogMethods {
+public class AprocLogMethods implements java.io.Serializable{
     
      private final static L log = new L(AprocLogMethods.class);
 
