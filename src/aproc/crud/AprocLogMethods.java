@@ -17,8 +17,13 @@ public class AprocLogMethods implements java.io.Serializable{
     static {
         AprocLogHibernateUtil.init();
     }
+    
+    public String Prueba(){
+    return "HOLA QUE HACE";
+    }
+            
 
-    public static ArrayList<Uztuser> ListUsuarios() {
+    public  ArrayList<Uztuser> ListUsuarios() {
         ArrayList<Uztuser> listUsuario = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -42,7 +47,7 @@ public class AprocLogMethods implements java.io.Serializable{
     
     //////////////////////
     
-    public static Uztuser GetUsuariosById(String uztuserId) {
+    public  Uztuser GetUsuariosById(String uztuserId) {
         Uztuser objUsuario = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -68,7 +73,7 @@ public class AprocLogMethods implements java.io.Serializable{
     }
     
     ////////////////////////
-    public static ArrayList<Uztuser> GetUsuariosByEstado(Character uztuserEstado) {
+    public  ArrayList<Uztuser> GetUsuariosByEstado(Character uztuserEstado) {
         ArrayList<Uztuser> objUsuario = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -94,7 +99,7 @@ public class AprocLogMethods implements java.io.Serializable{
     }
     /////////////////////////////////////////////////
     //LISTA DE USUARIOS POR EL CARGO
-    public static ArrayList<Uztuser> GetUsuariosByCargo(String uztuserCargo) {
+    public  ArrayList<Uztuser> GetUsuariosByCargo(String uztuserCargo) {
         ArrayList<Uztuser> objUsuario = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -121,7 +126,7 @@ public class AprocLogMethods implements java.io.Serializable{
 
         /////////////////////////////////////////////////
     //LISTA DE USUARIOS POR EL CAMPUS
-    public static ArrayList<Uztuser> GetUsuariosByCampus(String uztuserCampus) {
+    public  ArrayList<Uztuser> GetUsuariosByCampus(String uztuserCampus) {
         ArrayList<Uztuser> objUsuario = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -147,7 +152,7 @@ public class AprocLogMethods implements java.io.Serializable{
     }
     //////////////////////////
     ///LISTA DE ROLES POR ESTADO
-    public static ArrayList<Uztrol> GetRolesByEstado(Character uztrolEstado) {
+    public  ArrayList<Uztrol> GetRolesByEstado(Character uztrolEstado) {
         ArrayList<Uztrol> objRol = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -173,7 +178,7 @@ public class AprocLogMethods implements java.io.Serializable{
     }
     ////////////////////by: Elvis Sarchi
     ///TODA LA LISTA DE ROLES
-    public static ArrayList<Uztrol> ListRoles() {
+    public  ArrayList<Uztrol> ListRoles() {
         ArrayList<Uztrol> listRoles = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -196,7 +201,7 @@ public class AprocLogMethods implements java.io.Serializable{
     }
     //////////////////
     ///LISTA DE ROLES POR ID DE ROL
-    public static Uztrol GetRolById(BigDecimal uztrolId) {
+    public  Uztrol GetRolById(BigDecimal uztrolId) {
         Uztrol objRol = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -224,7 +229,7 @@ public class AprocLogMethods implements java.io.Serializable{
     ///////////SISTEMAS/////////////
     ///////////////////////////////////////
     /////////LISTA DE SISTEMAS
-    public static ArrayList<Uztsist> ListSistemas() {
+    public  ArrayList<Uztsist> ListSistemas() {
         ArrayList<Uztsist> listSistemas = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -248,7 +253,7 @@ public class AprocLogMethods implements java.io.Serializable{
     
     //////////////////////////////////////////////////
     /////SISTEMA POR ID
-    public static Uztsist GetSistemaById(BigDecimal uztsistId) {
+    public  Uztsist GetSistemaById(BigDecimal uztsistId) {
         Uztsist objSistema = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -275,7 +280,7 @@ public class AprocLogMethods implements java.io.Serializable{
     
     //////////////////////////////////////////////////////
     ///LISTA DE SISTEMAS POR ESTADO
-    public static ArrayList<Uztsist> GetSistemasByEstado(Character uztsistEstado) {
+    public  ArrayList<Uztsist> GetSistemasByEstado(Character uztsistEstado) {
         ArrayList<Uztsist> objSistemas = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -301,7 +306,7 @@ public class AprocLogMethods implements java.io.Serializable{
     }
     
 ///////Lista de sistemas por ruta
-    public static ArrayList<Uztsist> GetSistemasByRuta(String uztsistRuta) {
+    public  ArrayList<Uztsist> GetSistemasByRuta(String uztsistRuta) {
         ArrayList<Uztsist> objSistemas = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -328,7 +333,7 @@ public class AprocLogMethods implements java.io.Serializable{
      ///////////PROCEDIMIENTOS/////////////
     ///////////////////////////////////////
     /////////LISTA DE PROCEDIMIENTOS
-     public static ArrayList<Uztproc> ListProcedimientos() {
+     public  ArrayList<Uztproc> ListProcedimientos() {
         ArrayList<Uztproc> listProcedimientos = null;
         AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
         Exception delegateException = null;
@@ -350,7 +355,7 @@ public class AprocLogMethods implements java.io.Serializable{
         return listProcedimientos;
     }
 
-    private static Object stringToClob(String uztsistRuta) {
+    private  Object stringToClob(String uztsistRuta) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

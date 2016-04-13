@@ -27,7 +27,7 @@ public class test {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        Clob a= null;
+        //Clob a= null;
         //**************USUARIOS************************************//
         
        //ArrayList<Uztuser> usuario = AprocLogMethods.ListUsuarios();
@@ -60,15 +60,21 @@ public class test {
         
         //**************SISTEMAS************************************//
         
-        ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByEstado('A');
-        System.out.println(sistemas);
+//        ArrayList<Uztsist> sistemas = AprocLogMethods.GetSistemasByEstado('A');
+//        System.out.println(sistemas);
         
         //**************PROCEDIMIENTOS************************************//
         
-        ArrayList<Uztproc> procedi = AprocLogMethods.ListProcedimientos();
-        System.out.println(procedi);
+//        ArrayList<Uztproc> procedi = AprocLogMethods.ListProcedimientos();
+//        System.out.println(procedi);
+        
+//        System.out.println(AprocLogMethods.Prueba());
         
         //**************PROCEDIMIENTOS************************************//
+        
+        AprocLogMethods met= new AprocLogMethods();
+        ArrayList<Uztuser> usuarios = met.ListUsuarios();
+        System.out.println(usuarios.get(0).getUztuserNombres());
     }
     
 }
