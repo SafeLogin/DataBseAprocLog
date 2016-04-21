@@ -329,7 +329,19 @@ private static java.sql.Clob stringToClob(String source)
         }
         return listProcedimientos;
     }
-       
+       ///////////////////////////////////////////////
+         public static Boolean insertUsuario(Uztuser usu) {
+        Boolean exito = false;
+        DAOServices ds = new DAOServices(AprocLogHibernateUtil.
+                getSessionFactory().getCurrentSession());
+        if (usu != null) {
+            ds.save(usu);
+            exito = true;
+        }
+        return exito;
+    }
+         //////////////////////////
+         
        
        
 }

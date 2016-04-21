@@ -75,6 +75,18 @@ public class test {
         AprocLogMethods met= new AprocLogMethods();
         ArrayList<Uztuser> usuarios = met.ListUsuarios();
         System.out.println(usuarios.get(0).getUztuserNombres());
+        Uztuser usuario = new Uztuser();
+        BigDecimal num;
+        num = BigDecimal.valueOf(11112);
+        
+        usuario.setUztuserPidm(num);
+        usuario.setUztuserId("L00347715");
+        usuario.setUztuserCargo("Estudiante");
+        usuario.setUztuserEstado('A');
+        usuario.setUztuserNombres("Sandra Paguay");
+        usuario.setUztuserCampus("01");
+        System.out.println(met.InsertarUsuario(usuario));
+        System.out.println("");
     }
     
 }

@@ -358,4 +358,30 @@ public class AprocLogMethods implements java.io.Serializable{
     private  Object stringToClob(String uztsistRuta) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+    ///////////////////
+     public  Boolean InsertarUsuario(Uztuser usu) {
+        Boolean exito = false;
+        AprocLogHibernateSessionHandler hss = new AprocLogHibernateSessionHandler();
+        Exception delegateException = null;
+        try {
+            if (usu != null) {
+                exito = AprocLogCrud.insertUsuario(usu);
+            }
+        } catch (Exception ex) {
+            log.level.error("ERROR EN insertar usuario : ");
+            delegateException = ex;
+        } finally {
+            hss.close();
+            if (delegateException != null) {
+                try {
+                    throw delegateException;
+                } catch (Exception ex) {
+                    log.level.info("delageException " + ex.toString());
+                }
+            }
+        }
+        return exito;
+    }
 }
