@@ -20,6 +20,7 @@ public class AprocLogMethods implements java.io.Serializable{
     
     public String Prueba(){
     return "HOLA QUE HACE";
+    
     }
             
 

@@ -77,16 +77,17 @@ public class test {
         System.out.println(usuarios.get(0).getUztuserNombres());
         Uztuser usuario = new Uztuser();
         BigDecimal num;
-        num = BigDecimal.valueOf(11112);
+        num = BigDecimal.valueOf(11113);
         
         usuario.setUztuserPidm(num);
         usuario.setUztuserId("L00347715");
         usuario.setUztuserCargo("Estudiante");
         usuario.setUztuserEstado('A');
-        usuario.setUztuserNombres("Sandra Paguay");
+        usuario.setUztuserNombres("Elvis Sarchi");
         usuario.setUztuserCampus("01");
         System.out.println(met.InsertarUsuario(usuario));
         System.out.println("");
+        
     }
     
 }

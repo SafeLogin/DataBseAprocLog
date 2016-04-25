@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import oracle.sql.CLOB;
 
+
 public class AprocLogCrud implements java.io.Serializable{
     
     public final static L log = new L(AprocLogCrud.class);
